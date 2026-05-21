@@ -3,8 +3,30 @@ spring:
     name: program-service
 
   config:
-    import: "configserver:"
+    import: "optional:configserver:"
+    fail-fast: false
 
   cloud:
     config:
-      uri: http://config.platform:9000
+      uri: http://localhost:9000
+      enabled: true
+
+  mvc:
+    problemdetails:
+      enabled: true
+
+  mongodb:
+    uri: mongodb://mongo:Kkvhm8ZsqXhXbBadnheNblw6vHqr4DRrUp6KMZsj6tL0jNtf@966fd2df-afff-4d1f-a0d6-074ca9420d23.asia-south1.firestore.goog:443/program-mongo-db?loadBalanced=true&tls=true&authMechanism=SCRAM-SHA-256&retryWrites=false
+
+server:
+  port: 0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9001/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+  instance:
+    preferIpAddress: true
+
